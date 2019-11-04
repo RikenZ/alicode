@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "accountNo": "153253159460150",
+    "availableAmount": 873,
+    "timeCreated": 1532531594607
+  },
+  {
+    "id": 2,
+    "accountNo": "153253159460149",
+    "availableAmount": 822,
+    "timeCreated": 1532531594607
+  },
+  {
+    "id": 3,
+    "accountNo": "153253159460148",
+    "availableAmount": 78,
+    "timeCreated": 1532531594607
+  },
+  {
+    "id": 4,
+    "accountNo": "153253159460147",
+    "availableAmount": 39,
+    "timeCreated": 1532531594607
+  }
+]
