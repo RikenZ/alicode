@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Controller
+//转账接口
+@RestController
 @RequestMapping(value = "/service")
 public class TransferController {
 
@@ -22,9 +23,8 @@ public class TransferController {
     private TransferService transferService;
 
     @SysLog("转账")
-    @ResponseBody
     @PutMapping(value = "/v2/transfer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Result> transfer(@Valid @RequestBody TransferRequestParamDTO transferParamDTO) {
+    public ResponseEntity<Result<Transfer>> transfer(@Valid @RequestBody TransferRequestParamDTO transferParamDTO) {
         Transfer transfer = transferService.transfer(transferParamDTO);
         return ResponseEntity.ok(new Result<>(transfer));
     }

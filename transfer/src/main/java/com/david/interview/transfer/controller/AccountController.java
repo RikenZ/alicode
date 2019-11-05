@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+//账户接口
+@RestController
 @RequestMapping(value = "/service")
 public class AccountController {
 
     @Autowired
     private AccountService accountService;
 
-    @ResponseBody
     @GetMapping(value = "/v2/accounts", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Result> listAccount() {
+    public ResponseEntity<Result<List<Account>>> listAccount() {
         List<Account> accounts = accountService.listAccount();
         return ResponseEntity.ok(new Result<>(accounts));
     }
