@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 
 @Data
 public class TransferRequestParamDTO implements Serializable {
-    private static final long serialVersionUID = 7620722779909099750L;
 
     /**
      * 交易单号

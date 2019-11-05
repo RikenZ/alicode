@@ -9,8 +9,6 @@ import java.math.BigDecimal;
 
 @Data
 public class Transfer implements Serializable {
-    private static final long serialVersionUID = -6548319329571430698L;
-
     /**
      * 交易单号
      * */

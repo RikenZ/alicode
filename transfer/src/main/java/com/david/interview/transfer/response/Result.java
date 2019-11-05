@@ -6,8 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class Result<T> implements Serializable {
-    private static final long serialVersionUID = 4692958320047342711L;
-
     /**
      * 返回true表示业务受理成功,返回false表示业务受理失败
      */

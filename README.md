@@ -22,14 +22,34 @@ alibaba interview
 ### 答
 1. 设计了 发送红包,抢红包,退款的接口。
 2. 发红包: 扣除账号金额 生成红包金额 存储在mysql 红包金额使用List存储在redis中 
-3. 抢红包: pop redis list中的金额 加到自己账号余额中
+3. 抢红包: 利用的是 Redis 的原子性 使用 Redis 的 lpop list中的金额 加到自己账号余额中
 4. 退款: 启动定时任务 超时而且没有领取完成 剩余金额退还给原账户 
 3. 使用策略模式 切换红包金额生成策略
 
 ## 题目3
 - 计算某一账户的余额日变动信息，给出简短的代码逻辑实现
 ### 答
+```
+    //期初借方余额
+    Double beforeDebitBalance = 0D;
+    //期初贷方余额
+    Double beforeCreditBalance = 100D;
+    System.out.println("期初借方余额:" + beforeDebitBalance);
+    System.out.println("期初贷方余额:" + beforeCreditBalance);
+    //借方发生额 为借方金额相加
+    Double debitAmount = 100D;
+    //贷方发生额 为贷方金额相加
+    Double creditAmount = 50D;
+    System.out.println("贷方发生额:" + creditAmount);
+    System.out.println("借方发生额:" + debitAmount);
+    //期末借方余额 为借方余额加+借方发生额
+    Double afterDebitBalance = beforeDebitBalance + debitAmount;
+    //期末贷方余额 为贷方余额+贷方发生额
+    Double afterCreditBalance = beforeCreditBalance + creditAmount;
+    System.out.println("期末借方余额:" + afterDebitBalance);
+    System.out.println("期末贷方余额:" + afterCreditBalance);
 
+```
 
 ## 题目4
 - 给出网络重试场景下的一致性解决方案
@@ -42,3 +62,6 @@ alibaba interview
 - 给定两个文件，分别有100亿个整数，只提供1G内存，如何找出两文件交集？
 - 提示：100亿个整数大约需要40G才能存下，一次性读入到内存中是不现实的，可考虑MapReduce实现。
 ### 答
+1. 如果可以允许有误差 并且要求效率的话 可以使用BloomFilter 遍历把其中一个文件读进BloomFilter,再遍历另一个文件 把存在的数字写到结果文件中
+2. 切分成200个小文件 遍历文件 a 每一行的数字hash(n)%200 把一个大文件中切分到不同partition中(相同的数字肯定在相同partition中)。文件b同样处理各个 partition中 分别内存计算200对文件相同的数字 然后把结果合并到一个文件中
+

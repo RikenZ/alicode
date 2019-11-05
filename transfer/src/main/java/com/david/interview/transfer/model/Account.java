@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 
 @Data
 public class Account implements Serializable {
-    private static final long serialVersionUID = 1913526216813672031L;
-
 
     /**
      * 数据库自增id
